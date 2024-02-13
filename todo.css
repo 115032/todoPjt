@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    /* body에는 기본적으로 margin 8px 들어가있음 */
+    background-image: url("background.jpg");
+    /* background-repeat: no-repeat; */
+    /* 배경화면 여러개 반복으로 쌓여져있을 때 하나로 보이게하기 */
+    /* background-size: cover; */
+    /* 배경화면 작게 보일 때 전체화면으로 키우기 */
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    min-height: 100vh;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.topNav {
+    min-width: 60vw;
+    margin: 0px;
+    padding: 10px;
+    border-top: solid 10px pink;
+}
+
+.task-area {
+    border: 1px solid lightslategray
+}
+
+.tab-area {
+   display: flex;
+   border-bottom: 1px solid lightslategray;
+   position: relative;
+}
+.tab-area div {
+    padding: 1em;
+}
+
+#underline {
+    height: 5px;
+    background-color: aquamarine;
+    position: absolute;
+    width: 70px;
+    left: 0px;
+    top: 52px;
+    padding: 0px;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}

@@ -1,14 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To do website launching</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="todo.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="topNav">
+        <h1>To do list</h1>
+      </div>
 
-<script src="todo.js"></script>
-</body>
+      <div class="input-area">
+        <input id="task-input" type="text" placeholder="오늘 할일은?">
+        <button id="addBtn">추가하기</button>
+      </div>
+      
+      <section class="task-area">
+       
+       <div class="tab-area">
+        <div id="underline"></div>
+        <div>전체</div>
+        <div>완료</div>
+        <div>진행중</div>
+       </div>
 
+       <div class="taskListBox">
+        <!-- <div class="task">
+            <div>집가기</div>
+            <div class="buttons">
+                <button>Check</button>
+                <button>Delete</button>
+            </div>
+        </div> -->
+        <!-- ▲ for loop으로 추가 만들어줬으니 기본값 삭제 -->
+       </div>
+
+      </section>
+
+
+    </div>
+
+    <script src="todo.js"></script>
+  </body>
 </html>
