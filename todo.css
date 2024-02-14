@@ -51,3 +51,15 @@ body {
     justify-content: space-between;
     padding: 1em;
 }
+
+.task-done {
+    text-decoration: line-through;
+}
+
+.task-checked{
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    background-color: lightgrey
+}
+
