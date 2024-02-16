@@ -26,14 +26,6 @@ let tabs = document.querySelectorAll(".tab-area div")
 let mode = 'all'
 
 let filterList = [];
-let completedList = [];
-
-
-for(let i = 1; i<tabs.length; i++) {
-  tabs[i].addEventListener("click", function(event)
-  {filter(event)})
-}
-
 
 
 
@@ -48,10 +40,12 @@ taskInput.addEventListener("keydown", function(event) {
  }
 });
 
-// 2. 체크버튼 클릭하는 순간 isComplete 을 true 로 바꿔주고
-    // - true이면 끝난걸로 간주하고 밑줄 보여죽
-    // - false이면 안끝난것으로 간주하고 그대로
 
+    for(let i = 1; i<tabs.length; i++) {
+        tabs[i].addEventListener("click", function(event)
+        {filter(event)})
+      }
+      
 
 
 // (3) 함수들
@@ -88,6 +82,8 @@ function addTask() {
 
  function render() {
 
+    let resultHTML = '';
+    // string 저장 변수 만듬
     let list = [];
 
    // 내가 선택한 탭에 따라서
@@ -101,8 +97,6 @@ function addTask() {
    // all 은 taskList
    // ongoing & completed 는 filterList
 
-    let resultHTML = '';
-    // string 저장 변수 만듬
 
     for(let i=0; i<list.length; i++) {
         
@@ -140,52 +134,52 @@ function addTask() {
 
 function toggleComplete(id) {
     for(let i=0; i<taskList.length; i++){
-      if(taskList[i].id == id){
+      if(taskList[i].id === id){
         taskList[i].isComplete = !taskList[i].isComplete;
         // true ↔ false vice-versa 로 움직이게하기! 
         break;
       }    
     }
-    render();
-    console.log(taskList)
+    filter();
 }
 
 function deleteTask(id) {
     for(let i = 0; i<taskList.length; i++) {
         if(taskList[i].id == id) {
             taskList.splice(i,1)
-          
+          filterList = filterList.filter(task=>task.id!==id);
+          break;
         }
     }
-    render();
+    filter();
 }
 
 
-function filter(event) {
+function filter(e) {
     
     // console.log("filter", event.target.id)
     // 각 버튼 클릭 시 filter 잘 찍히는지 확인
-    mode = event.target.id
+    if (e) {
+        mode = e.target.id;
+        underline.style.width = e.target.offsetWidth + "px";
+        underline.style.left = e.target.offsetLeft + "px";
+        underline.style.top =
+          e.target.offsetTop + (e.target.offsetHeight - 4) + "px";
+      }
      filterList = [];
-     completedList =[];
     
-    if (mode === "all") {
-        // 전체 리스트 보여준다
-        render();
-    } else if (mode === "ongoing"){
+    
+    if (mode === "ongoing"){
         // 진행중 리스트
         // task.isComplete = false
         for (let i=0; i<taskList.length; i++){
-            if(taskList[i].isComplete === false) {
+            if(taskList[i].isComplete == false) {
                 filterList.push(taskList[i])
             }
         }
-        render();
-        // 진행중 필터 잘되는지 확인
-      
     } else if(mode === "completed") {
        for(let i=0; i<taskList.length;i++) {
-        if(taskList[i].isComplete === true) {
+        if(taskList[i].isComplete == true) {
             filterList.push(taskList[i])
         }
        }
